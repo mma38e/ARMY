@@ -4,7 +4,7 @@ mkdir ARMY
 cd ARMY
 rails new team
 cd team
-bin/rails server
+
 
 #create Student form and table(scaffold)
 
@@ -18,3 +18,8 @@ bin/rails generate scaffold events eventName:string eventLocation:string eventDa
 
 #migrate scaffold into database
 bin/rake db:migrate
+
+
+
+#run the server
+bin/rails server
