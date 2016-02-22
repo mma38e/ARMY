@@ -28,16 +28,16 @@ bin/rails generate controller student
 bin/rails generate controller events
 
 #move all controllers to locations
-mv ../files/controllers app/
+mv -f ../files/controllers app/
 
 #move all models
-mv ../files/models app/
+mv -f ../files/models app/
 
 #move all views
-mv ../files/views app/
+mv -f ../files/views app/
 
 #move all routes
-mv ../files/routes.rb config/
+mv -f ../files/routes.rb config/
 
 #run the server
 bin/rails server
