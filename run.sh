@@ -10,7 +10,7 @@ cd ARMY
 
 #create Student form and table(scaffold)
 
-bin/rails generate scaffold Student firstName:string lastName:string email:string studentId:string
+bin/rails generate scaffold student firstName:string lastName:string email:string studentId:string
 
 #migrate scaffold into database
 bin/rake db:migrate
@@ -21,7 +21,11 @@ bin/rails generate scaffold events eventName:string eventLocation:string eventDa
 #migrate scaffold into database
 bin/rake db:migrate
 
+#Create player controller
+bin/rails generate controller student
 
+#create event controller
+bin/rails generate controller events
 
 #run the server
 bin/rails server
