@@ -4,10 +4,8 @@ rm -rf ARMY/
 
 #creates basic app
 
-mkdir ARMY
+rails new ARMY
 cd ARMY
-rails new team
-cd team
 
 
 #create Student form and table(scaffold)
