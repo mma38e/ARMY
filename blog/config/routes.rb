@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    resources :articles
+   resources :players
    root 'welcome#index'
    resources :articles do
   resources :comments
