@@ -27,5 +27,17 @@ bin/rails generate controller student
 #create event controller
 bin/rails generate controller events
 
+#move all controllers to locations
+mv ../files/controllers app/
+
+#move all models
+mv ../files/models app/
+
+#move all views
+mv ../files/views app/
+
+#move all routes
+mv ../files/routes.rb config/
+
 #run the server
 bin/rails server
