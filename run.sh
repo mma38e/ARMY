@@ -1,3 +1,7 @@
+#removes previous run if there is one
+
+rm -rf ARMY/
+
 #creates basic app
 
 mkdir ARMY
