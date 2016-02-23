@@ -24,8 +24,11 @@ bin/rake db:migrate
 #Create player controller
 bin/rails generate controller welcome "homepage"
 
-#setup routes to homepage
-Rails root :to => 'welcome#homepage'
+#Change root to newly created homepage
+#bin/rails root :to => 'welcome#homepage'
+
+#move all routes
+#mv -f ../files/routes.rb config/
 
 #run the server
 bin/rails server
