@@ -25,7 +25,10 @@ bin/rake db:migrate
 bin/rails generate controller welcome "homepage"
 
 #move all routes
-mv -f ../files/routes.rb config/
+#mv -f ../files/routes.rb config/
+
+#add to homepage to routes
+sed '10 a root welcome#homepage' config/routes.rb
 
 #run the server
 bin/rails server
