@@ -26,13 +26,10 @@ bin/rake db:migrate
 bin/rails generate controller welcome "homepage"
 
 #move views
-cp -f ../Files/homepage.html.erb app/views/welcome/
+mv -f ../Files/homepage.html.erb app/views/welcome/
 
 #move all routes
-cp -f ../Files/routes.rb config/ config/
-
-#remove files folder
-#rm -rf ../Files/
+mv -f ../Files/routes.rb config/ config/
 
 #run the server
-bin/rails server
+#bin/rails server
