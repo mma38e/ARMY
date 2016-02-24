@@ -32,7 +32,7 @@ cp -f ../Files/homepage.html.erb app/views/welcome/
 cp -f ../Files/routes.rb config/ config/
 
 #remove files folder
-#rm -rf ../Files/
+rm -rf ../Files/
 
 #run the server
 bin/rails server
