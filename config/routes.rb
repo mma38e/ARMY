@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :members
+  resources :memberships
   root 'home#index'
 
   resources :clubs
@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   #devise_for :users
 
   devise_scope :user do  
-     get '/users/sign_out' => 'devise/sessions#destroy'     
+     get '/users/sign_out' => 'devise/sessions#destroy'  
+
   end
+  get '/join', to: 'clubs#join', as: 'join'
+  get '/my_portfolio', to: 'users#my_portfolio', as:'portfolio'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

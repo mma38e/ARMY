@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421204348) do
+ActiveRecord::Schema.define(version: 20160422052711) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +21,17 @@ ActiveRecord::Schema.define(version: 20160421204348) do
     t.integer  "admin_id"
   end
 
-  create_table "members", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
+    t.string   "eventName"
+    t.string   "eventLocation"
+    t.date     "eventDate"
+    t.time     "eventTime"
+    t.text     "eventInfo"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
     t.integer  "club_id"
     t.integer  "user_id"
     t.boolean  "approved"
@@ -29,13 +39,22 @@ ActiveRecord::Schema.define(version: 20160421204348) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "members", ["club_id"], name: "index_members_on_club_id"
-  add_index "members", ["user_id"], name: "index_members_on_user_id"
+  add_index "memberships", ["club_id"], name: "index_memberships_on_club_id"
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
 
   create_table "statuses", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "email"
+    t.string   "studentId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

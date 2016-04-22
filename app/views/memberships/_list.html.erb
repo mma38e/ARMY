@@ -1,0 +1,16 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Club Name</th>
+			<th>Club Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @user_memberships.each do |user_membership| %>
+		<tr>
+			<td><%= user_membership.name %></td>
+			<td><%= user_membership.description %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

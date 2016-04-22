@@ -13,6 +13,9 @@ class ClubsController < ApplicationController
   def show
   end
 
+  def join
+  end
+
   # GET /clubs/new
   def new
     @club = current_user.clubs_as_admin.build #Club.new
