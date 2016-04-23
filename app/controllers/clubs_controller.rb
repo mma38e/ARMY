@@ -29,11 +29,17 @@ class ClubsController < ApplicationController
   # POST /clubs.json
   def create
     @club = current_user.clubs_as_admin.build(club_params) #Club.new(club_params)
-
+    
     respond_to do |format|
       if @club.save
-        format.html { redirect_to @club, notice: 'Club was successfully created.' }
-        format.json { render :show, status: :created, location: @club }
+        @club_membership = Membership.new(user_id: current_user.id, club_id: @club.id, approved: true)
+        if @club_membership.save
+          format.html { redirect_to @club, notice: 'Club was successfully created.' }
+          format.json { render :show, status: :created, location: @club }
+        else
+          format.html { render :new }
+          format.json { render json: @club.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @club.errors, status: :unprocessable_entity }
