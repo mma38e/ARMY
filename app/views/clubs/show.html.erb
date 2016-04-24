@@ -35,16 +35,14 @@ li{
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
+			<th>Member Name</th>
 			<th>Email</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @club_members.each do |club_member| %>
 		<tr>
-			<td><%= club_member.firstName %></td>
-			<td><%= club_member.lastName %></td>
+			<td><%= club_member.firstName %> <%= club_member.lastName %></td>
 			<td><%= club_member.email%></td>			
 		</tr>
 		<% end %>
