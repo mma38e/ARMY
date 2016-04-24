@@ -33,24 +33,7 @@ li{
 </p>
 
 <h2>Club Members</h2>
-
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Member Name</th>
-			<th>Email</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @club_members.each do |club_member| %>
-		<tr>
-			<td><%= club_member.firstName %> <%= club_member.lastName %></td>
-			<td><%= club_member.email%></td>			
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
+	<%= render 'member_list_user' %>
 <br>
 
 

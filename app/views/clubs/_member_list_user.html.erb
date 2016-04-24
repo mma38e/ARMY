@@ -1,0 +1,32 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Member Name</th>
+			<th>Email</th>
+			<th>Role</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @club_members.each do |club_member| %>
+		<tr>
+			<td><%= club_member.firstName %> <%= club_member.lastName %></td>
+			<td><%= club_member.email%></td>	
+			<td>
+				<% if @club.admin_id == club_member.id %>
+					Admin
+				<% else %>
+					Member
+				<% end %>
+			</td>
+			<td>
+				<% if club_member.approved == 't' %>
+					Approved
+				<% else %>
+					Pending Aproval
+				<% end %>
+			</td>		
+		</tr>
+		<% end %>
+	</tbody>
+</table>
