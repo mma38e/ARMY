@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/join', to: 'clubs#join', as: 'join'
   get '/my_portfolio', to: 'users#my_portfolio', as:'portfolio'
 
+  get '/home', to: 'home#home', as: 'home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

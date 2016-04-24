@@ -1,1 +1,18 @@
 <h1>Join a club</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Club Name</th>
+			<th>Club Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @clubs.each do |club| %>
+		<tr>
+			<td><%= link_to club.name, club_path(club.id) %></td>
+			<td><%= club.description %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

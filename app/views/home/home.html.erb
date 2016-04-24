@@ -10,10 +10,14 @@
 	<tbody>
 		<% @user_memberships.each do |user_membership| %>
 		<tr>
-			<td> <%= link_to user_membership.name, club_path(user_membership.id) %></td>
+			<td><%= link_to user_membership.name, club_path(user_membership.id) %></td>
 			<td><%= user_membership.description %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
+<br>
+
+<%= link_to 'New Club', new_club_path %>
+<%= link_to 'Join Club', join_path %>

@@ -1,14 +1,58 @@
-<p id="notice"><%= notice %></p>
+<html>
+<head>
+<style>
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+li{
+	display: inline;
+}
+</style>
+</head>
+<body>
+<p>
+<div class = "menu">
+	<ul>
+		<li><%= link_to 'Edit', edit_club_path(@club) %></li>
+		<li><%= link_to 'Events' %> </li>
+		<li><%= link_to 'Blog' %> </li>
+	</ul>
+</div>
+</p>
 
 <p>
   <strong>Name:</strong>
   <%= @club.name %>
-</p>
-
-<p>
+ <br>
   <strong>Description:</strong>
   <%= @club.description %>
 </p>
 
-<%= link_to 'Edit', edit_club_path(@club) %> |
-<%= link_to 'Back', clubs_path %>
+<h2>Club Members</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @club_members.each do |club_member| %>
+		<tr>
+			<td><%= club_member.firstName %></td>
+			<td><%= club_member.lastName %></td>
+			<td><%= club_member.email%></td>			
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+
+
+</body>
+</html>

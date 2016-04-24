@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
   def index
   	if user_signed_in?
-  		redirect_to clubs_path
+  		redirect_to home_path
   	else
   		redirect_to new_user_session_path	
   	end
+  end
+  def home
+  	@user_memberships = Club.joins(memberships: :user).where(users: {id: current_user.id})
+		@user = current_user
   end
 end
