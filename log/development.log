@@ -32974,3 +32974,657 @@ Processing by HomeController#home as HTML
   [1m[35mClub Load (0.0ms)[0m  SELECT "clubs".* FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
   Rendered home/home.html.erb within layouts/application (0.0ms)
 Completed 200 OK in 106ms (Views: 115.4ms | ActiveRecord: 0.0ms)
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT "clubs".* FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 1[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.name, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 1
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:27:03 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(clubs.*, memberships.approved) FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (30.0ms)
+Completed 500 Internal Server Error in 121ms (ActiveRecord: 3.0ms)
+
+ActionView::Template::Error (SQLite3::SQLException: near "*": syntax error: SELECT COUNT(clubs.*, memberships.approved) FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5):
+    22: </div>
+    23: </p>
+    24: 
+    25: <% if @user_memberships.count > 0 %>
+    26: 	<h2>My Clubs</h2>
+    27: 
+    28: 	<table class="table table-striped">
+  app/views/home/home.html.erb:25:in `_app_views_home_home_html_erb___897827849_87147500'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (809.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (725.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1678.2ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:34:36 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (51.0ms)
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (undefined local variable or method `id' for #<#<Class:0x0000000a658970>:0x0000000be06540>):
+    22: </div>
+    23: </p>
+    24: 
+    25: <% if @user_memberships.count(id) > 0 %>
+    26: 	<h2>My Clubs</h2>
+    27: 
+    28: 	<table class="table table-striped">
+  app/views/home/home.html.erb:25:in `_app_views_home_home_html_erb___897827849_99624200'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (814.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (722.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1666.1ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:35:13 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT(a) FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (19.0ms)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 2.0ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: a: SELECT COUNT(a) FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5):
+    22: </div>
+    23: </p>
+    24: 
+    25: <% if @user_memberships.count('a') > 0 %>
+    26: 	<h2>My Clubs</h2>
+    27: 
+    28: 	<table class="table table-striped">
+  app/views/home/home.html.erb:25:in `_app_views_home_home_html_erb___897827849_84751920'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (810.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (717.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1641.1ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:35:54 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 146ms (Views: 139.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:36:03 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 125ms (Views: 121.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/clubs/1" for ::1 at 2016-04-24 14:36:09 -0700
+Processing by ClubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mClub Load (1.0ms)[0m  SELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "memberships"."user_id" = "users"."id" WHERE "memberships"."club_id" = ?[0m  [["club_id", 1]]
+  Rendered clubs/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 142ms (Views: 135.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:36:12 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 123ms (Views: 122.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:36:55 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 127ms (Views: 122.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users_edit" for ::1 at 2016-04-24 14:37:22 -0700
+
+ActionController::RoutingError (No route matches [GET] "/users_edit"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1102.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (753.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1725.1ms)
+
+
+Started GET "/edit_user_registration_path" for ::1 at 2016-04-24 14:38:07 -0700
+
+ActionController::RoutingError (No route matches [GET] "/edit_user_registration_path"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1061.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (720.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1639.1ms)
+
+
+Started GET "/" for ::1 at 2016-04-24 14:39:04 -0700
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+Redirected to http://localhost:3000/home
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:39:04 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 125ms (Views: 116.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:39:11 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (15.6ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 118ms (Views: 109.4ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/join" for ::1 at 2016-04-24 14:39:17 -0700
+Processing by ClubsController#join as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mClub Load (0.0ms)[0m  SELECT "clubs".* FROM "clubs"
+  [1m[36mMembership Load (0.0ms)[0m  [1mSELECT "memberships".* FROM "memberships" WHERE "memberships"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered clubs/join.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 131ms (Views: 138.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/javascripts/defaults.js" for ::1 at 2016-04-24 14:39:17 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1138.5ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (689.5ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1549.4ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:39:41 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 150ms (Views: 158.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:44:31 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 147ms (Views: 141.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:44:55 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (1.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 136ms (Views: 131.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:45:51 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (1.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 138ms (Views: 132.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:46:11 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 131ms (Views: 127.4ms | ActiveRecord: 0.0ms)
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.name, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 1[0m
+  [1m[35mMembership Load (0.0ms)[0m  SELECT  "memberships".* FROM "memberships"  ORDER BY "memberships"."id" DESC LIMIT 1
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:47:44 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 138ms (Views: 131.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:47:48 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 125ms (Views: 131.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/clubs/new" for ::1 at 2016-04-24 14:47:56 -0700
+Processing by ClubsController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  Rendered clubs/_form.html.erb (0.0ms)
+  Rendered clubs/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 156ms (Views: 142.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/clubs" for ::1 at 2016-04-24 14:48:05 -0700
+Processing by ClubsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HwqSgzzcaE+7s/oAraczSTN5nGeDoHIq7wdxhsQtMZODwPNHV7iSwrhRjgi0Ubm+DjPCVt9irp1DEZc2ghOv2Q==", "club"=>{"name"=>"Chacha", "description"=>"blablabla"}, "commit"=>"Create Club"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "clubs" ("name", "description", "admin_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Chacha"], ["description", "blablabla"], ["admin_id", 5], ["created_at", "2016-04-24 21:48:05.028602"], ["updated_at", "2016-04-24 21:48:05.028602"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mMembership Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "memberships" WHERE ("memberships"."user_id" = 5 AND "memberships"."club_id" = 8) LIMIT 1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "memberships" ("user_id", "club_id", "approved", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 5], ["club_id", 8], ["approved", "t"], ["created_at", "2016-04-24 21:48:05.047611"], ["updated_at", "2016-04-24 21:48:05.047611"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/clubs/8
+Completed 302 Found in 38ms (ActiveRecord: 14.1ms)
+
+
+Started GET "/clubs/8" for ::1 at 2016-04-24 14:48:05 -0700
+Processing by ClubsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT  "clubs".* FROM "clubs" WHERE "clubs"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "memberships"."user_id" = "users"."id" WHERE "memberships"."club_id" = ?  [["club_id", 8]]
+  Rendered clubs/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 127ms (Views: 121.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:49:03 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 138ms (Views: 132.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for ::1 at 2016-04-24 14:49:35 -0700
+Processing by ClubsController#join as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT "clubs".* FROM "clubs"[0m
+  [1m[35mMembership Load (0.0ms)[0m  SELECT "memberships".* FROM "memberships" WHERE "memberships"."user_id" = ?  [["user_id", 5]]
+  Rendered clubs/join.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 132.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/defaults.js" for ::1 at 2016-04-24 14:49:36 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1060.3ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (674.1ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1591.6ms)
+
+
+Started POST "/memberships?membership%5Bapproved%5D=false&membership%5Bclub_id%5D=7&membership%5Buser_id%5D=5" for ::1 at 2016-04-24 14:49:39 -0700
+Processing by MembershipsController#create as HTML
+  Parameters: {"authenticity_token"=>"dMuYbOh6WdpL8E1TQAVLjFQsOHRWbVqswN/5hTfWV4joAfmogx6jV0gSOVtZ88F7aWZmRQqvhhtsyR81cejJwg==", "membership"=>{"approved"=>"false", "club_id"=>"7", "user_id"=>"5"}}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mMembership Exists (0.0ms)[0m  SELECT  1 AS one FROM "memberships" WHERE ("memberships"."user_id" = 5 AND "memberships"."club_id" = 7) LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "memberships" ("club_id", "user_id", "approved", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["club_id", 7], ["user_id", 5], ["approved", "f"], ["created_at", "2016-04-24 21:49:39.339104"], ["updated_at", "2016-04-24 21:49:39.339104"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/join
+Completed 302 Found in 21ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/join" for ::1 at 2016-04-24 14:49:39 -0700
+Processing by ClubsController#join as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mClub Load (1.0ms)[0m  SELECT "clubs".* FROM "clubs"
+  [1m[36mMembership Load (0.0ms)[0m  [1mSELECT "memberships".* FROM "memberships" WHERE "memberships"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered clubs/join.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 140ms (Views: 131.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/javascripts/defaults.js" for ::1 at 2016-04-24 14:49:39 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1121.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (844.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1957.1ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:49:49 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 127ms (Views: 134.3ms | ActiveRecord: 0.0ms)
+  [1m[36mMembership Load (0.0ms)[0m  [1mSELECT  "memberships".* FROM "memberships"  ORDER BY "memberships"."id" DESC LIMIT 1[0m
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:50:54 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (1.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 145ms (Views: 138.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:51:46 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 131ms (Views: 127.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:52:35 -0700
+Processing by HomeController#home as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35m (1.0ms)[0m  SELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  Rendered home/home.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 132ms (Views: 125.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:52:54 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 124ms (Views: 124.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/join" for ::1 at 2016-04-24 14:53:21 -0700
+Processing by ClubsController#join as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mClub Load (0.0ms)[0m  SELECT "clubs".* FROM "clubs"
+  [1m[36mMembership Load (0.0ms)[0m  [1mSELECT "memberships".* FROM "memberships" WHERE "memberships"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered clubs/join.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 138ms (Views: 146.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/defaults.js" for ::1 at 2016-04-24 14:53:21 -0700
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/defaults.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby22-x64/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.7ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (1031.3ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (15.6ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (640.6ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (1477.9ms)
+
+
+Started GET "/home" for ::1 at 2016-04-24 14:53:29 -0700
+Processing by HomeController#home as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36m (15.6ms)[0m  [1mSELECT COUNT("clubs"."id") FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5[0m
+  [1m[35mClub Load (0.0ms)[0m  SELECT clubs.*, memberships.approved FROM "clubs" INNER JOIN "memberships" ON "memberships"."club_id" = "clubs"."id" INNER JOIN "users" ON "users"."id" = "memberships"."user_id" WHERE "users"."id" = 5
+  Rendered home/home.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 114ms (Views: 105.9ms | ActiveRecord: 16.6ms)

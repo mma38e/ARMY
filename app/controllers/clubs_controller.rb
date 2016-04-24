@@ -12,6 +12,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     @club_members = User.joins(:memberships).where(:memberships => {club_id: @club.id})
+    
   end
 
   def join

@@ -22,7 +22,7 @@ li{
 </div>
 </p>
 
-<% if @user_memberships.count > 0 %>
+<% if @user_memberships.count('id') > 0 %>
 	<h2>My Clubs</h2>
 
 	<table class="table table-striped">
@@ -30,6 +30,8 @@ li{
 			<tr>
 				<th>Club Name</th>
 				<th>Club Description</th>
+				<th>Status</th>
+				<th>Role</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,6 +39,20 @@ li{
 			<tr>
 				<td><%= link_to user_membership.name, club_path(user_membership.id) %></td>
 				<td><%= user_membership.description %></td>
+				<td>
+					<% if user_membership.approved == 't' %>
+						Active
+					<% else %>
+						Pending Aproval
+					<% end %>
+				</td>
+				<td>
+					<% if user_membership.admin_id == current_user.id %>
+						Admin
+					<% else %>
+						Member
+					<% end %>
+				</td>
 			</tr>
 			<% end %>
 		</tbody>
