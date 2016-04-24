@@ -13,4 +13,6 @@ class RegistrationsController < Devise::RegistrationsController
     	'/verify_email' # Or :prefix_to_your_route
   	end
 
+  	private
+
 end	

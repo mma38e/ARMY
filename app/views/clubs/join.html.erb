@@ -1,3 +1,18 @@
+<html>
+<head>
+<style>
+
+</style>
+
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+
+</head>
+
+<body>
+
+<p id="notice"><%= notice %></p>
+
 <h1>Join a club</h1>
 
 <table class="table table-striped">
@@ -5,14 +20,33 @@
 		<tr>
 			<th>Club Name</th>
 			<th>Club Description</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @clubs.each do |club| %>
 		<tr>
+			<% already_member = false %>
+			<% @user_clubs.each do |user_club| %>
+				<% if club.id == user_club.club_id %>
+					<% already_member = true %>
+				<% end %>
+			<% end %>
 			<td><%= link_to club.name, club_path(club.id) %></td>
 			<td><%= club.description %></td>
+			<td>
+
+			<% if already_member %>
+				already joined
+			<% else %>
+				<%= button_to 'Join', {:controller => "memberships", :action => "create", :membership => {:club_id => club.id,  :user_id => current_user.id, :approved => false}}, :method => "post" %>
+			<% end %>	
+
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
+</body>
+</html>

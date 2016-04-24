@@ -28,8 +28,8 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-        format.json { render :show, status: :created, location: @membership }
+        format.html { redirect_to join_path, notice: 'Your membership request has been submitted' }
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @membership.errors, status: :unprocessable_entity }

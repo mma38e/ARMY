@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/verify_email', to: 'users#verify', as: 'verify_email'
 
+  #match "/join" => "clubs#create_membership", as: 'join_club', via: [:post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -16,6 +16,21 @@ class ClubsController < ApplicationController
 
   def join
     @clubs = Club.all
+    @user_clubs = Membership.where(user_id: current_user.id)
+  end
+
+  def create_membership
+    @membership = Membership.new(membership_params)
+    
+    respond_to do |format|
+      if @membership.save
+        format.html { redirect_to join_path, notice: 'Your membership request has been submitted' }
+        format.json { head :no_content }
+      else
+        format.html { render :new }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /clubs/new
