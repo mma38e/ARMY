@@ -1,4 +1,28 @@
-<h1>My Clubs</h1>
+<html>
+<head>
+<style>
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+li{
+	display: inline;
+}
+</style>
+</head>
+<body>
+
+<p>
+<div class = "menu">
+	<ul>
+		<li><%= link_to 'Create Club', new_club_path %></li>
+		<li><%= link_to 'Join Club', join_path %> </li>
+	</ul>
+</div>
+</p>
+
+<h2>My Clubs</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -19,5 +43,5 @@
 
 <br>
 
-<%= link_to 'New Club', new_club_path %>
-<%= link_to 'Join Club', join_path %>
+</body>
+</html>
