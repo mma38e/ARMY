@@ -22,25 +22,29 @@ li{
 </div>
 </p>
 
-<h2>My Clubs</h2>
+<% if @user_memberships.count > 0 %>
+	<h2>My Clubs</h2>
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Club Name</th>
-			<th>Club Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @user_memberships.each do |user_membership| %>
-		<tr>
-			<td><%= link_to user_membership.name, club_path(user_membership.id) %></td>
-			<td><%= user_membership.description %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Club Name</th>
+				<th>Club Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @user_memberships.each do |user_membership| %>
+			<tr>
+				<td><%= link_to user_membership.name, club_path(user_membership.id) %></td>
+				<td><%= user_membership.description %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<p> You are currently not a member of any club.  Click the links above to either start a new club or to join an existing club. 
+	</p>
+<% end %>
 <br>
 
 </body>
