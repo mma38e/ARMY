@@ -15,6 +15,11 @@
 
 <h1>Join a club</h1>
 
+<%= form_tag(join_path, :method => "get", id: "search-form") do  %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Clubs" %>
+<%= submit_tag "Search" %>
+<% end %>
+
 <table class="table table-striped">
 	<thead>
 		<tr>
