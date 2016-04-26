@@ -1,3 +1,5 @@
+<!-- table to display all the members of the club -->
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -5,6 +7,8 @@
 			<th>Email</th>
 			<th>Role</th>
 			<th>Status</th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,12 +24,23 @@
 				<% end %>
 			</td>
 			<td>
+				<!-- logic to populate the status column. -->
 				<% if club_member.approved == 't' %>
 					Approved
 				<% else %>
 					Pending Aproval
 				<% end %>
-			</td>		
+			</td>
+			<!-- if a member has not been approved and the user logged in is the admin of the club
+			provide two options to either approve or deny the pending membership request -->
+			<% if club_member.approved == 'f' && @club.admin_id == current_user.id %>
+				<td>
+					<%= button_to 'Aprove', {:controller => "memberships", :action => "update_status", :membership => {:club_id => @club.id,  :user_id => club_member.id, :approved => true}}, :method => "put" %>  
+				</td>		
+				<td> 
+					<%= button_to 'Deny', {:controller => "memberships", :action => "destroy", :id => club_member.memberships_id}, :method => "delete" %>  
+				</td>
+			<% end %> 
 		</tr>
 		<% end %>
 	</tbody>

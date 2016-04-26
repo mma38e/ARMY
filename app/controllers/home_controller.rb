@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    # if user has not signed in redirect to login page
   	if user_signed_in?
   		redirect_to home_path
   	else

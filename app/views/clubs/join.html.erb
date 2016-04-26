@@ -29,8 +29,11 @@
 		</tr>
 	</thead>
 	<tbody>
+		<!-- populate table with all clubs available in the application
+		or after the search results -->
 		<% @clubs.each do |club| %>
 		<tr>
+			<!-- flag used to check if the user already belongs to the club being listed -->
 			<% already_member = false %>
 			<% @user_clubs.each do |user_club| %>
 				<% if club.id == user_club.club_id %>
@@ -41,6 +44,8 @@
 			<td><%= club.description %></td>
 			<td>
 
+			<!-- if the user is not a member of the club, provide a button for the user to 
+			request to join the club -->
 			<% if already_member %>
 				already joined
 			<% else %>

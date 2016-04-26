@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :memberships
+  resources :memberships do
+    collection do
+      put :update_status
+    end
+  end
   root 'home#index'
 
   resources :clubs
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   get '/home', to: 'home#home', as: 'home'
 
   get '/verify_email', to: 'users#verify', as: 'verify_email'
+
 
   #match "/join" => "clubs#create_membership", as: 'join_club', via: [:post]
 

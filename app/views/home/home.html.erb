@@ -22,6 +22,8 @@ li{
 </div>
 </p>
 
+<!-- ## display list of clubs that a user belongs to
+## otherwise  display message saying that there are no clubs to display-->
 <% if @club_users.count('id') > 0 %>
 	<h2>My Clubs</h2>
 
@@ -40,6 +42,9 @@ li{
 				<td><%= link_to club_user.name, club_path(club_user.id) %></td>
 				<td><%= club_user.description %></td>
 				<td>
+					<!-- logic to populate the status coloum
+					if member has not been approved it displays a message
+					saying pending aproval -->
 					<% if club_user.approved == 't' %>
 						Active
 					<% else %>
@@ -47,6 +52,7 @@ li{
 					<% end %>
 				</td>
 				<td>
+					<!-- logic to populate the Role column -->
 					<% if club_user.admin_id == current_user.id %>
 						Admin
 					<% else %>

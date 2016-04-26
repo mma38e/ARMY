@@ -8,32 +8,20 @@ class ClubsController < ApplicationController
     @clubs = Club.all
   end
 
-  # GET /clubs/1
-  # GET /clubs/1.json
+  
+  # GET club members, their approved status, and the membership id
   def show
-    @club_members = User.joins(:memberships).where(:memberships => {club_id: @club.id}).select('users.*, memberships.approved')
+    @club_members = User.joins(:memberships).where(:memberships => {club_id: @club.id})
+                    .select('users.*, memberships.approved, memberships.id as memberships_id')
     
   end
 
+  # Queries all clubs that the current user belongs to and also all the clubs in the database
   def join
     @clubs = Club.all
     @user_clubs = Membership.where(user_id: current_user.id)
     if params[:search]
         @clubs = Club.search(params[:search]).order('name ASC')
-    end
-  end
-
-  def create_membership
-    @membership = Membership.new(membership_params)
-    
-    respond_to do |format|
-      if @membership.save
-        format.html { redirect_to join_path, notice: 'Your membership request has been submitted' }
-        format.json { head :no_content }
-      else
-        format.html { render :new }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -46,13 +34,13 @@ class ClubsController < ApplicationController
   def edit
   end
 
-  # POST /clubs
-  # POST /clubs.json
+  # Creates a club record and also a membership record between the user and the club
   def create
     @club = current_user.clubs_as_admin.build(club_params) #Club.new(club_params)
     
     respond_to do |format|
       if @club.save
+        # when a user creates a club, automatically create a club_user record in the memberships table
         @club_membership = Membership.new(user_id: current_user.id, club_id: @club.id, approved: true)
         if @club_membership.save
           format.html { redirect_to @club, notice: 'Club was successfully created.' }
