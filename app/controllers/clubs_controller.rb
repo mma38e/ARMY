@@ -20,8 +20,6 @@ class ClubsController < ApplicationController
     @user_clubs = Membership.where(user_id: current_user.id)
     if params[:search]
         @clubs = Club.search(params[:search]).order('name ASC')
-    else
-        @clubs = Club.all.order('name ASC')
     end
   end
 

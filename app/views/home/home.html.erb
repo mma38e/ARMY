@@ -22,7 +22,7 @@ li{
 </div>
 </p>
 
-<% if @user_memberships.count('id') > 0 %>
+<% if @club_users.count('id') > 0 %>
 	<h2>My Clubs</h2>
 
 	<table class="table table-striped">
@@ -35,19 +35,19 @@ li{
 			</tr>
 		</thead>
 		<tbody>
-			<% @user_memberships.each do |user_membership| %>
+			<% @club_users.each do |club_user| %>
 			<tr>
-				<td><%= link_to user_membership.name, club_path(user_membership.id) %></td>
-				<td><%= user_membership.description %></td>
+				<td><%= link_to club_user.name, club_path(club_user.id) %></td>
+				<td><%= club_user.description %></td>
 				<td>
-					<% if user_membership.approved == 't' %>
+					<% if club_user.approved == 't' %>
 						Active
 					<% else %>
 						Pending Aproval
 					<% end %>
 				</td>
 				<td>
-					<% if user_membership.admin_id == current_user.id %>
+					<% if club_user.admin_id == current_user.id %>
 						Admin
 					<% else %>
 						Member
@@ -58,7 +58,7 @@ li{
 		</tbody>
 	</table>
 <% else %>
-	<p> You are currently not a member of any club.  Click the links above to either start a new club or to join an existing club. 
+	<p> You are currently not a member of any club.  Use links above to either start a new club or join an existing club. 
 	</p>
 <% end %>
 <br>

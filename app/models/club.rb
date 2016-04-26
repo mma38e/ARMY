@@ -3,7 +3,11 @@ class Club < ActiveRecord::Base
 	has_many :memberships
 
 	def self.search(search)
-		where("name Like ?", "%#{search}%")
+	  if search
+	    where("name Like ?", "%#{search}%")
 		where("description Like ?", "%#{search}%")
+	  else
+
+	  end
 	end
 end
