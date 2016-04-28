@@ -1,0 +1,61 @@
+<html>
+<head>
+<style>
+
+</style>
+
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+
+</head>
+
+<body>
+
+<p id="notice"><%= notice %></p>
+
+
+<h1>Invite Members</h1>
+
+<br>
+
+<!-- search bar too find a user to invite -->
+<%= form_tag(invite_club_path, :method => "get", id: "search-form") do  %>
+<%= text_field_tag :search, params[:search], placeholder: "Enter user's email" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<br>
+
+<!-- populate table with all users that match search criteria -->
+<% if @users != nil && @users.present? %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Member Name</th>
+			<th>Email</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.firstName %> <%= user.lastName %></td>
+			<td><%= user.email %></td>
+			<td>
+			<%= user.already_member(@club_id, user.id) %>
+
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% elsif @users == nil %>
+<% else %>
+	<p>No users were found with that email address.</p>
+<% end %>
+
+<br>
+<%= link_to 'Back', :back %>
+</body>
+</html>

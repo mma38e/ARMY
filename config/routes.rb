@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   end
   root 'home#index'
 
-  resources :clubs
+  resources :clubs do
+    member do
+      get :invite
+    end
+  end
+
+
   devise_for :users, controllers: { registrations: "registrations", sessions: "users/sessions"}
 
   #devise_for :users

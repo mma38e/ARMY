@@ -13,7 +13,6 @@ class ClubsController < ApplicationController
   def show
     @club_members = User.joins(:memberships).where(:memberships => {club_id: @club.id})
                     .select('users.*, memberships.approved, memberships.id as memberships_id')
-    
   end
 
   # Queries all clubs that the current user belongs to and also all the clubs in the database
@@ -23,6 +22,15 @@ class ClubsController < ApplicationController
     if params[:search]
         @clubs = Club.search(params[:search]).order('name ASC')
     end
+  end
+
+  # Used for pulling all users so that they can be invited to join a club
+  def invite
+    @users = nil
+    if params[:search]
+      @users = User.where(email: params[:search])
+    end
+    @club_id = params[:club_id]
   end
 
   # GET /clubs/new

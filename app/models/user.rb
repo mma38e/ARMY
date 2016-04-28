@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :clubs_as_admin, class_name: 'Club', foreign_key: :admin_id
   has_many :memberships
+
+  def already_member(club, user)
+  	@memberships = Membership.where(club_id: 1, user_id: 1)
+  	@memberships.each do |membership|
+  		return true
+  	end
+  		return false
+  end
 end

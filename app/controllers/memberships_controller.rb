@@ -20,8 +20,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/1/edit
   def edit
   end
-
-
+  
   # Creates a record relating the user to the club in the memberships table
   def create
     @membership = Membership.new(membership_params)
