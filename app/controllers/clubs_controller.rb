@@ -30,7 +30,7 @@ class ClubsController < ApplicationController
     if params[:search]
       @users = User.where(email: params[:search])
     end
-    @club_id = params[:club_id]
+    @club = Club.find(params[:id])
   end
 
   # GET /clubs/new

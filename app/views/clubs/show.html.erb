@@ -20,7 +20,7 @@ li{
 	<ul>
 		<% if @club.admin_id == current_user.id %>
 			<li><%= link_to 'Edit', edit_club_path(@club) %></li>
-			<li><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :club_id => @club.id}, :method => "get" %>
+			<li><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :id => @club.id}, :method => "get" %>
 			</li>
 		<% end %>
 		<li><%= link_to 'Events' %> </li>

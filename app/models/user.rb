@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :memberships
 
   def already_member(club, user)
-  	@memberships = Membership.where(club_id: 1, user_id: 1)
+  	@memberships = Membership.where(club_id: club, user_id: user)
   	@memberships.each do |membership|
   		return true
   	end

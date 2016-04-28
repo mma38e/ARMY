@@ -34,10 +34,14 @@
 		<% @clubs.each do |club| %>
 		<tr>
 			<!-- flag used to check if the user already belongs to the club being listed -->
-			<% already_member = false %>
+			<% status = 'prospect' %>
 			<% @user_clubs.each do |user_club| %>
-				<% if club.id == user_club.club_id %>
-					<% already_member = true %>
+				<% if club.id == user_club.club_id%>
+					<% if user_club.approved %>
+						<% status = 'joined' %>
+					<% else %>
+						<% status = 'pending' %>
+					<% end %>
 				<% end %>
 			<% end %>
 			<td><%= link_to club.name, club_path(club.id) %></td>
@@ -46,8 +50,10 @@
 
 			<!-- if the user is not a member of the club, provide a button for the user to 
 			request to join the club -->
-			<% if already_member %>
+			<% if status == 'joined' %>
 				already joined
+			<% elsif status == 'pending' %>
+				pending approval
 			<% else %>
 				<%= button_to 'Join', {:controller => "memberships", :action => "create", :membership => {:club_id => club.id,  :user_id => current_user.id, :approved => false}}, :method => "post" %>
 			<% end %>	

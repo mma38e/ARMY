@@ -43,7 +43,12 @@
 			<td><%= user.firstName %> <%= user.lastName %></td>
 			<td><%= user.email %></td>
 			<td>
-			<%= user.already_member(@club_id, user.id) %>
+			
+			<% if user.already_member(@club.id, user.id) %> 
+				Already joined club
+			<% else %>
+				<%= button_to 'Invite' %>
+			<% end %>
 
 			</td>
 		</tr>
