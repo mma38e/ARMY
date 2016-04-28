@@ -1,0 +1,15 @@
+select m.id
+    ,m.club_id
+    ,m.user_id
+    ,m.approved
+    ,u.firstName
+    ,u.lastName
+    ,u.email
+    ,c.name
+    ,c.description
+from memberships as m
+    join users as u
+        on m.user_id = u.id
+    join clubs as c
+        on m.club_id = c.id
+
