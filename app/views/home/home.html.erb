@@ -1,26 +1,18 @@
 <html>
 <head>
 <style>
-ul{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-li{
-	display: inline;
-}
+
+
 </style>
 </head>
 <body>
 
-<p>
-<div class = "menu">
-	<ul>
-		<li><%= link_to 'Create Club', new_club_path %></li>
-		<li><%= link_to 'Join Club', join_path %> </li>
+<!-- <div class = "menu"> -->
+	<ul class="menu2">
+		<li class="menu2_link"><%= link_to 'Create Club', new_club_path %></li>
+		<li class="menu2_link"><%= link_to 'Join Club', join_path %> </li>
 	</ul>
-</div>
-</p>
+
 
 <!-- ## display list of clubs that a user belongs to
 ## otherwise  display message saying that there are no clubs to display-->
@@ -31,7 +23,6 @@ li{
 		<thead>
 			<tr>
 				<th>Club Name</th>
-				<th>Club Description</th>
 				<th>Status</th>
 				<th>Role</th>
 			</tr>
@@ -40,7 +31,6 @@ li{
 			<% @club_users.each do |club_user| %>
 			<tr>
 				<td><%= link_to club_user.name, club_path(club_user.id) %></td>
-				<td><%= club_user.description %></td>
 				<td>
 					<!-- logic to populate the status coloum
 					if member has not been approved it displays a message
@@ -64,7 +54,7 @@ li{
 		</tbody>
 	</table>
 <% else %>
-	<p> You are currently not a member of any club.  Use links above to either start a new club or join an existing club. 
+	<p> You are currently not a member of any club.  Use the links above to either start a new club or join an existing club. 
 	</p>
 <% end %>
 <br>

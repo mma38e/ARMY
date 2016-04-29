@@ -13,21 +13,20 @@ li{
 </head>
 <body>
 
-<p id="notice"><%= notice %></p>
 
-<p>
-<div class = "menu">
-	<ul>
-		<% if @club.admin_id == current_user.id %>
-			<li><%= link_to 'Edit', edit_club_path(@club) %></li>
-			<li><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :id => @club.id}, :method => "get" %>
-			</li>
-		<% end %>
-		<li><%= link_to 'Events', {controller: "events", action: "index", id: @club.id}, method: "get" %> </li>
-		<li><%= link_to 'Blog' %> </li>
-	</ul>
-</div>
-</p>
+
+<ul class="menu2">
+	<% if @club.admin_id == current_user.id %>
+		<li class="menu2_link"><%= link_to 'Edit', edit_club_path(@club) %></li>
+		<li class="menu2_link"><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :id => @club.id}, :method => "get" %>
+		</li>
+	<% end %>
+	<li class="menu2_link"><%= link_to 'Events', {controller: "events", action: "index", id: @club.id}, method: "get" %> </li>
+	<li class="menu2_link"><%= link_to 'Blog' %> </li>
+</ul>
+<br>
+
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>

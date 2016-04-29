@@ -1,0 +1,96 @@
+<html>
+<head>
+<style>
+.menu1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    
+
+/*reduce bar size and align to the right*/
+/*  
+	position: fixed;  
+	top: 0px;
+    width: 20%;
+    right: 0px;*/
+}
+
+.menu1_link {
+    float: right;
+    border-left:1px solid #bbb;
+    
+}
+
+.menu1_link:last-child {
+    border-right: none;
+}
+
+.menu1_link a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu1_link a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.menu2{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #696969;    
+	height: 25px; 
+}
+.menu2_link{
+	display: inline;
+	border-right: 1px solid #bbb;
+	line-height: 25px;
+}
+
+.menu2_link a {
+    /*display: block;*/
+    color: white;
+    text-align: center;
+    padding: 8px 10px;
+    text-decoration: none;
+
+}
+
+.menu2_link a:hover:not(.active) {
+    background-color: #111;
+}
+#logo {
+	float:left;
+	font-size: 1.7em;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding-left: 43%;
+    border: none;
+}
+</style>
+</head>
+<body>
+
+<% if user_signed_in? %>
+	<ul class="menu1">
+		<li class= "menu1_link" id="logo"><%= link_to "ClubHUB", root_path %></li>
+		<li class="menu1_link"><%= link_to "Logout", destroy_user_session_path, :method => 'delete' %></li>
+		<li class="menu1_link"><%= link_to "Home", home_path %></li>		
+	</ul>
+<% end %>
+
+</body>
+</html>
+
