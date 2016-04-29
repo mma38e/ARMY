@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :events
 
   devise_for :users, controllers: { registrations: "registrations", sessions: "users/sessions"}
 

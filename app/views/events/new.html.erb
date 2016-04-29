@@ -1,5 +1,7 @@
 <h1>New Event</h1>
 
+<!-- hidden tag to pass clubid to the create action in the events controller -->
+
 <%= render 'form' %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', controller: "events", action: "index", id: @club.id %>

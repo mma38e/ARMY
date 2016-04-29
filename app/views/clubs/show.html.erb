@@ -23,7 +23,7 @@ li{
 			<li><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :id => @club.id}, :method => "get" %>
 			</li>
 		<% end %>
-		<li><%= link_to 'Events' %> </li>
+		<li><%= link_to 'Events', {controller: "events", action: "index", id: @club.id}, method: "get" %> </li>
 		<li><%= link_to 'Blog' %> </li>
 	</ul>
 </div>

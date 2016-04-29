@@ -12,7 +12,7 @@
 
 <p>
   <strong>Eventdate:</strong>
-  <%= @event.eventDate %>
+  <%= @event.eventDate.strftime("%m/%d/%Y") %>
 </p>
 
 <p>
@@ -26,4 +26,4 @@
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', controller: "events", action: "index", id: @event.club_id%>

@@ -3,8 +3,10 @@ class EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
+
   def index
-    @events = Event.all
+    @club = Club.find(params[:id])
+    @events = Event.where(club_id: @club.id)
   end
 
   # GET /events/1
@@ -14,7 +16,11 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @club = Club.find(params[:id])
+    @event = @club.events.build
+
+    # use flash to temporarily store club_id so it can be accessed in the create action
+    flash[:club_id] = @club.id
   end
 
   # GET /events/1/edit
@@ -24,11 +30,13 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    # @event = Event.new(event_params)
+    @club = Club.find(flash[:club_id])
+    @event = @club.events.build(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to controller: "events", action: "index", id: @club.id, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -54,9 +62,10 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    club_id = @event.club_id
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to controller: "events", action: "index", id: club_id, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
