@@ -2,7 +2,6 @@
 <head>
 <style>
 
-
 </style>
 </head>
 <body>
@@ -20,7 +19,7 @@
 	<h2>My Clubs</h2>
 
 	<table class="table table-striped">
-		<thead>
+		<thead class="thead-inverse">
 			<tr>
 				<th>Club Name</th>
 				<th>Status</th>
@@ -30,7 +29,7 @@
 		<tbody>
 			<% @club_users.each do |club_user| %>
 			<tr>
-				<td><%= link_to club_user.name, club_path(club_user.id) %></td>
+				<td style="text-decoration: underline;"><%= link_to club_user.name, club_path(club_user.id) %></td>
 				<td>
 					<!-- logic to populate the status coloum
 					if member has not been approved it displays a message

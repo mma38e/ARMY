@@ -19,8 +19,7 @@ Rails.application.routes.draw do
   #devise_for :users
 
   devise_scope :user do  
-     get '/users/sign_out' => 'devise/sessions#destroy'  
-
+     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   get '/join', to: 'clubs#join', as: 'join'
 
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
 
   get '/verify_email', to: 'users#verify', as: 'verify_email'
 
-
+  
   #match "/join" => "clubs#create_membership", as: 'join_club', via: [:post]
 
   # The priority is based upon order of creation: first created -> highest priority.

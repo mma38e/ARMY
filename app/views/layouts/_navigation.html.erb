@@ -79,17 +79,25 @@
     padding-left: 43%;
     border: none;
 }
+
 </style>
 </head>
 <body>
 
-<% if user_signed_in? %>
-	<ul class="menu1">
-		<li class= "menu1_link" id="logo"><%= link_to "ClubHUB", root_path %></li>
-		<li class="menu1_link"><%= link_to "Logout", destroy_user_session_path, :method => 'delete' %></li>
-		<li class="menu1_link"><%= link_to "Home", home_path %></li>		
-	</ul>
-<% end %>
+
+<ul class="menu1">
+
+	<li class= "menu1_link" id="logo"><%= link_to "ClubHUB", root_path %></li>
+    <% if user_signed_in? %>
+    	<li class="menu1_link"><%= link_to "Logout", destroy_user_session_path, :method => 'delete' %></li>
+    	<li class="menu1_link"><%= link_to "Home", home_path %></li>	
+    <% else %>
+        <li class="menu1_link"><%= link_to "Sign Up", new_user_registration_path %></li>  
+        <li class="menu1_link"><%= link_to "Log In", new_user_session_path, :method => 'get' %></li>
+        <li class="menu1_link"><%= link_to "Home", root_path, :method => 'get' %></li>
+    <% end %>	
+</ul>
+
 
 </body>
 </html>
