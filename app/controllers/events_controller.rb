@@ -7,11 +7,13 @@ class EventsController < ApplicationController
   def index
     @club = Club.find(params[:id])
     @events = Event.where(club_id: @club.id)
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @club = Club.find(@event.club_id)
   end
 
   # GET /events/new

@@ -1,3 +1,21 @@
+<html>
+<head>
+<style>
+
+</style>
+</head>
+<body>
+
+<ul class="menu2">
+  <li class="menu2_link"><%= link_to 'Events', controller: "events", action: "index", id: @event.club_id%> </li>
+  <% if @club.admin_id == current_user.id %>
+    <li class="menu2_link"><%= link_to 'Edit', edit_event_path(@event)%></li>
+    <!-- <li class="menu2_link"><%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+    </li>
+  <% end %>
+</ul>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,7 +35,7 @@
 
 <p>
   <strong>Eventtime:</strong>
-  <%= @event.eventTime %>
+  <%= @event.eventTime.strftime("%l:%M%P") %>
 </p>
 
 <p>
@@ -25,5 +43,7 @@
   <%= @event.eventInfo %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', controller: "events", action: "index", id: @event.club_id%>
+
+</body>
+</html>

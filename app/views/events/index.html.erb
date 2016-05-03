@@ -1,33 +1,57 @@
+<html>
+<head>
+<style>
+</style>
+
+</head>
+<body>
+
+<ul class="menu2">
+  <% if @club.admin_id == current_user.id %>
+    <li class="menu2_link"><%= link_to 'Club', club_path(@club.id) %></li>
+    <li class="menu2_link"><%= link_to 'New Event', {controller: "events", action: "new", id: @club.id}, method: "get"%>
+    </li>
+  <% end %>
+</ul>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<% if @events.count > 0 %>
+  <h1>Listing Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= event.eventName %></td>
-        <td><%= event.eventLocation %></td>
-        <td><%= event.eventDate.strftime("%m/%d/%Y") %></td>
-        <td><%= event.eventTime.strftime("%l:%M%P")  %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td class="table-link"><%= link_to event.eventName , event%></td>
+          <td><%= event.eventLocation %></td>
+          <td><%= event.eventDate.strftime("%m/%d/%Y") %></td>
+          <td><%= event.eventTime.strftime("%l:%M%P")  %></td>
+          <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    There are currently no events for <%= @club.name %>. 
+  </p>
+  <br>
+    <%= link_to 'Back', :back %>
+<% end %>
 
 <br>
 
-<%= link_to 'New Event', {controller: "events", action: "new", id: @club.id}, method: "get"%>
+</body>
+</html>
