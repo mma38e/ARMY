@@ -27,7 +27,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to join_path, notice: 'Your membership request has been submitted' }
+        format.html { redirect_to :back, notice: 'Your membership request has been submitted' }
         format.json { head :no_content }
       else
         format.html { render :new }
@@ -80,7 +80,7 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:club_id, :user_id, :approved)
+      params.require(:membership).permit(:club_id, :user_id, :approved, :incoming)
     end
 
 end

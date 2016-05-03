@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428220640) do
+ActiveRecord::Schema.define(version: 20160503050345) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160428220640) do
     t.boolean  "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "incoming"
   end
 
   add_index "memberships", ["club_id"], name: "index_memberships_on_club_id"

@@ -12,7 +12,7 @@ class ClubsController < ApplicationController
   # GET club members, their approved status, and the membership id
   def show
     @club_members = User.joins(:memberships).where(:memberships => {club_id: @club.id})
-                    .select('users.*, memberships.approved, memberships.id as memberships_id')
+                    .select('users.*, memberships.approved, memberships.id as memberships_id, memberships.incoming')
   end
 
   # Queries all clubs that the current user belongs to and also all the clubs in the database

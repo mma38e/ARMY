@@ -55,7 +55,7 @@
 			<% elsif status == 'pending' %>
 				pending approval
 			<% else %>
-				<%= button_to 'Join', {:controller => "memberships", :action => "create", :membership => {:club_id => club.id,  :user_id => current_user.id, :approved => false}}, :method => "post" %>
+				<%= button_to 'Join', {:controller => "memberships", :action => "create", :membership => {:club_id => club.id,  :user_id => current_user.id, :approved => false}, :retun_path: 'join_path'}, :method => "post" %>
 			<% end %>	
 
 			</td>

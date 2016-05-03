@@ -14,33 +14,40 @@
 	<tbody>
 		<% @club_members.each do |club_member| %>
 		<tr>
-			<td><%= club_member.firstName %> <%= club_member.lastName %></td>
-			<td><%= club_member.email%></td>	
-			<td>
-				<% if @club.admin_id == club_member.id %>
-					Admin
-				<% else %>
-					Member
-				<% end %>
-			</td>
-			<td>
-				<!-- logic to populate the status column. -->
-				<% if club_member.approved == 't' %>
-					Approved
-				<% else %>
-					Pending Aproval
-				<% end %>
-			</td>
-			<!-- if a member has not been approved and the user logged in is the admin of the club
-			provide two options to either approve or deny the pending membership request -->
-			<% if club_member.approved == 'f' && @club.admin_id == current_user.id %>
+			<% if @club.admin_id != current_user.id && club_member.approved == 'f' && club_member.id != current_user.id %>
+			<% else %>			
+				<td><%= club_member.firstName %> <%= club_member.lastName %></td>
+				<td><%= club_member.email%></td>	
 				<td>
-					<%= button_to 'Aprove', {:controller => "memberships", :action => "update_status", :membership => {:club_id => @club.id,  :user_id => club_member.id, :approved => true}}, :method => "put" %>  
-				</td>		
-				<td> 
-					<%= button_to 'Deny', {:controller => "memberships", :action => "destroy", :id => club_member.memberships_id}, :method => "delete" %>  
+					<% if @club.admin_id == club_member.id %>
+						Admin
+					<% else %>
+						Member
+					<% end %>
 				</td>
-			<% end %> 
+				<td>
+					<!-- logic to populate the status column. -->
+					<% if club_member.approved == 't' %>
+						Active
+					<% else %>
+						<% if club_member.incoming == 'f' %>
+							Pending Aproval
+						<% else %>
+							Pending User's Aproval
+						<% end %>
+					<% end %>
+				</td>
+				<!-- if a member has not been approved and the user logged in is the admin of the club
+				provide two options to either approve or deny the pending membership request -->
+					<% if club_member.approved == 'f' && @club.admin_id == current_user.id && club_member.incoming == 'f' %>
+						<td>
+							<%= button_to 'Aprove', {:controller => "memberships", :action => "update_status", :membership => {:club_id => @club.id,  :user_id => club_member.id, :approved => true}}, :method => "put" %>  
+						</td>		
+						<td> 
+							<%= button_to 'Deny', {:controller => "memberships", :action => "destroy", :id => club_member.memberships_id}, :method => "delete" %>  
+						</td>
+					<% end %>
+			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
