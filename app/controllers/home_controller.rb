@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   	end
   end
   def home
-  	@club_users = Club.joins(memberships: :user).where(users: {id: current_user.id}).select('clubs.*, memberships.approved')
+  	@club_users = Club.joins(memberships: :user).where(users: {id: current_user.id}).select('clubs.*, memberships.approved, memberships.incoming, memberships.user_id, memberships.id as memberships_id')
 		@user = current_user
   end
 

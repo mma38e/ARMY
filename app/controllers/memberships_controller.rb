@@ -62,12 +62,34 @@ class MembershipsController < ApplicationController
       end
     end
   end
+
+    def accept_invite
+    @membership = Membership.where(club_id: params[:membership][:club_id], user_id: params[:membership][:user_id]).first
+    respond_to do |format|
+      if @membership.update_attribute(:approved, params[:membership][:approved])
+        format.html { redirect_to home_path, notice: 'You have successfully joined ' + params[:club_name] }
+        format.json { render :show, status: :ok, location: @membership }
+      else
+        format.html { render :edit }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to club_path(@membership.club_id), notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to club_path(@membership.club_id), notice: 'Membership was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def deny_invite
+    @membership = Membership.find(params[:id])
+    @membership.destroy
+    respond_to do |format|
+      format.html { redirect_to home_path, notice: 'Membership was successfully rejected.' }
       format.json { head :no_content }
     end
   end

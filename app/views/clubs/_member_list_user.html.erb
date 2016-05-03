@@ -8,7 +8,6 @@
 			<th>Role</th>
 			<th>Status</th>
 			<th></th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,14 +38,15 @@
 				</td>
 				<!-- if a member has not been approved and the user logged in is the admin of the club
 				provide two options to either approve or deny the pending membership request -->
+					<td>
 					<% if club_member.approved == 'f' && @club.admin_id == current_user.id && club_member.incoming == 'f' %>
-						<td>
-							<%= button_to 'Aprove', {:controller => "memberships", :action => "update_status", :membership => {:club_id => @club.id,  :user_id => club_member.id, :approved => true}}, :method => "put" %>  
-						</td>		
-						<td> 
-							<%= button_to 'Deny', {:controller => "memberships", :action => "destroy", :id => club_member.memberships_id}, :method => "delete" %>  
-						</td>
+						
+							<div style="float:left; width:auto;padding-right: 15px">
+							<%= button_to 'Aprove', {:controller => "memberships", :action => "update_status", :membership => {:club_id => @club.id,  :user_id => club_member.id, :approved => true}}, :method => "put" %>  </div>
+							<div style="">
+							<%= button_to 'Deny', {:controller => "memberships", :action => "destroy", :id => club_member.memberships_id}, :method => "delete" %>  </div>
 					<% end %>
+					</td>
 			<% end %>
 		</tr>
 		<% end %>

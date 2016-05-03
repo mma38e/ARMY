@@ -14,6 +14,7 @@
 		<li class="menu2_link"><%= link_to 'Join Club', join_path %> </li>
 	</ul>
 
+<p id="notice"><%= notice %></p>
 
 <!-- ## display list of clubs that a user belongs to
 ## otherwise  display message saying that there are no clubs to display-->
@@ -26,6 +27,7 @@
 				<th>Club Name</th>
 				<th>Status</th>
 				<th>Role</th>
+				<th colspan="1"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,7 +41,11 @@
 					<% if club_user.approved == 't' %>
 						Active
 					<% else %>
-						Pending Aproval
+						<% if club_user.incoming == 'f' %>
+							Pending Aproval
+						<% else %>
+							Pending User's Aproval
+						<% end %>
 					<% end %>
 				</td>
 				<td>
@@ -49,6 +55,15 @@
 					<% else %>
 						Member
 					<% end %>
+				</td>
+				<td>
+				<% if club_user.incoming == 't' && club_user.approved == 'f' %>
+
+					<div style="float:left; width:auto;padding-right: 15px">
+					<%= button_to 'Accept', {:controller => "memberships", :action => "accept_invite", :membership => {:club_id => club_user.id,  :user_id => club_user.user_id, :approved => true, :incoming => false}, :club_name => club_user.name}, :method => "put"  %> </div>
+					<div style="">
+					<%= button_to 'Reject', {:controller => "memberships", :action => "deny_invite", :id => club_user.memberships_id}, :method => "delete" %>   </div>
+				<% end %>
 				</td>
 			</tr>
 			<% end %>

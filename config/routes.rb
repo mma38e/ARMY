@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :memberships do
     collection do
       put :update_status
+      put :accept_invite
+      delete :deny_invite
     end
   end
   root 'home#index'

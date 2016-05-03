@@ -9,6 +9,7 @@
 
 
 <ul class="menu2">
+	<li class="menu2_link"><%= link_to 'My Clubs', home_path %></li>
 	<% if @club.admin_id == current_user.id %>
 		<li class="menu2_link"><%= link_to 'Edit', edit_club_path(@club) %></li>
 		<li class="menu2_link"><%= link_to 'Invite', {:controller => "clubs", :action => "invite", :id => @club.id}, :method => "get" %>
