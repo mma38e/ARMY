@@ -22,6 +22,7 @@ class ClubsController < ApplicationController
     if params[:search]
         @clubs = Club.search(params[:search]).order('name ASC')
     end
+    
   end
 
   # Used for pulling all users so that they can be invited to join a club

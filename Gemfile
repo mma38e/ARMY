@@ -46,7 +46,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# used for user authentication
 gem 'devise', '~> 4.0'
 
+# used to prevent weird error message when using windows
+# this does not require you to update the application.html.erb file in the layouts folder
 gem 'coffee-script-source', '1.8.0'
 
+#used for generating grids with functionality such as filters and pagination
+gem "wice_grid", '3.6.0.pre4'
+
+gem 'font-awesome-sass',  '~> 4.3'

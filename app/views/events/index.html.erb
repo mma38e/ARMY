@@ -7,8 +7,8 @@
 <body>
 
 <ul class="menu2">
-  <% if @club.admin_id == current_user.id %>
     <li class="menu2_link"><%= link_to 'Club', club_path(@club.id) %></li>
+    <% if @club.admin_id == current_user.id %>
     <li class="menu2_link"><%= link_to 'New Event', {controller: "events", action: "new", id: @club.id}, method: "get"%>
     </li>
   <% end %>
