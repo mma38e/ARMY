@@ -2,6 +2,7 @@ class Club < ActiveRecord::Base
 	belongs_to :admin, class_name: 'User', foreign_key: :admin_id
 	has_many :memberships
 	has_many :events
+	has_many :posts
 
 	# used for the search bar to find a club
 	def self.search(search)

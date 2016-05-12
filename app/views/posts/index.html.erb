@@ -1,0 +1,55 @@
+<html>
+<head>
+<style>
+</style>
+
+</head>
+<body>
+
+<ul class="menu2">
+    <li class="menu2_link"><%= link_to 'Club', club_path(@club.id) %></li>
+    <li class="menu2_link"><%= link_to 'New Post', {controller: "posts", action: "new", id: @club.id}, method: "get"%></li>
+</ul>
+
+<p id="notice"><%= notice %></p>
+<% if @posts.count > 0 %>
+
+<h1><%= @club.name %> Blog</h1>
+<br>
+
+<h3>Listing Posts</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Author</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class="table-link"><%= link_to post.title, {controller: "posts", action: "show", id: post.id , club_id: @club.id }, method: "get" %></td>
+        <td><%= post.body %></td>
+        <td><%= post.user.firstName%> <%= post.user.lastName%></td>
+        <% if post.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+  <p>
+    There are currently no posts for <%= @club.name %>. 
+  </p>
+<% end %>
+<br>
+
+</body>
+</html>

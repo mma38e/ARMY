@@ -16,7 +16,7 @@
 		</li>
 	<% end %>
 	<li class="menu2_link"><%= link_to 'Events', {controller: "events", action: "index", id: @club.id}, method: "get" %> </li>
-	<li class="menu2_link"><%= link_to 'Blog' %> </li>
+	<li class="menu2_link"><%= link_to 'Blog', {controller: "posts", action: "index", id: @club.id}, method: "get" %> </li>
 </ul>
 <br>
 

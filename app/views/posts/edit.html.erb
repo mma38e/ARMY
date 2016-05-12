@@ -1,0 +1,21 @@
+<html>
+<head>
+<style>
+</style>
+
+</head>
+<body>
+
+<ul class="menu2">
+    <li class="menu2_link"><%= link_to 'Club', club_path(@post.club_id) %></li>
+    <li class="menu2_link"><%= link_to 'Posts', {controller: "posts", action: "index", id: @post.club_id}, method: "get" %></li>
+</ul>
+
+<h1>Editing Post</h1>
+
+<%= render 'form_edit_post' %>
+
+<%= link_to 'Cancel', {controller: "posts", action: "index", id: @post.club_id}, method: "get" %>
+
+</body>
+</html>
