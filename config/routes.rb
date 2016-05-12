@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendees
   resources :memberships do
     collection do
       put :update_status

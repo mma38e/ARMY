@@ -14,6 +14,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @club = Club.find(@event.club_id)
+    @attendees = Attendee.where(event_id: @event.id, attending: true)
+    @response = Attendee.where(event_id: @event.id, user_id: current_user.id).first
+    @attendees_count = @attendees.count
   end
 
   # GET /events/new

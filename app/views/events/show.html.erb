@@ -43,5 +43,60 @@
   <%= @event.eventInfo %>
 </p>
 
+<p>
+  <strong>Attendees:</strong>
+  <%= @attendees_count %>
+</p>
+<br>
+<% if @response.blank? %>
+  Will you be attending this event?  
+  <p>
+  <div style="float:left; width:auto;padding-right: 15px">
+  <%= button_to 'Yes', {:controller => "attendees", :action => "create", :attendee => {:user_id => current_user.id,  :event_id => @event.id, :attending => true}}, :method => "post" %> </div>
+  <div style="">
+  <%= button_to 'No ' , {:controller => "attendees", :action => "create", :attendee => {:user_id => current_user.id,  :event_id => @event.id, :attending => false}}, :method => "post" %>
+  </div>
+  </p>
+<% else %>
+  <% if @response.attending? %>
+  <div class="">
+    <p> You are currently attending this event. Would you like to change your response?
+      <div style="float:left; width:auto;padding-left: 0px">
+      <%= button_to 'Yes', {:controller => "attendees", :action => "update", :attendee => {:user_id => current_user.id,  :event_id => @event.id, :attending => false}}, :method => "put" %> </div>
+    </p>
+  </div>
+  <% else %>
+  <!-- <div class="well pull-left inline"> -->
+    <p> You are currently not attending this event. Would you like to change your response? 
+    <div style="float:left; width:auto;padding-left: 0px">
+    <%= button_to 'Yes', {:controller => "attendees", :action => "update", :attendee => {:user_id => current_user.id,  :event_id => @event.id, :attending => true}}, :method => "put" %> </div>
+    </p>
+    <!-- </div> -->
+    </p>
+  <% end %>
+<% end %>
+<br>
+<p></p>
+<% if @attendees_count > 0 %>
+  <h1>Listing Attendees</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Member Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @attendees.each do |attendee| %>
+      <tr>
+        <td><%= attendee.user.firstName %> <%= attendee.user.lastName %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
 </body>
 </html>
